@@ -1,0 +1,524 @@
+:root {
+  --bg-top: #fff6e5;
+  --bg-bottom: #dff3ff;
+  --card: #ffffff;
+  --ink: #263238;
+  --muted: #6b7c85;
+  --primary: #ff7a59;
+  --primary-dark: #e85d3f;
+  --secondary: #7d7bf5;
+  --good: #43c59e;
+  --soft: #fff0d6;
+  --radius: 28px;
+  --shadow: 0 18px 40px rgba(60, 90, 120, 0.18);
+  --fun-font: "Fredoka", "Comic Sans MS", "Chalkboard SE", "Trebuchet MS", sans-serif;
+  --arabic-font: "Amiri", "Noto Naskh Arabic", "Traditional Arabic", "Segoe UI", Tahoma, serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--fun-font);
+  color: var(--ink);
+  background: linear-gradient(160deg, var(--bg-top), var(--bg-bottom));
+  overflow-x: hidden;
+}
+
+.bubbles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bubble {
+  position: absolute;
+  bottom: -90px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+  animation: rise linear infinite;
+}
+
+@keyframes rise {
+  to {
+    transform: translateY(-115vh);
+    opacity: 0;
+  }
+}
+
+.app {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.screen {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.card {
+  width: min(100%, 620px);
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 4px solid rgba(255, 255, 255, 0.9);
+  padding: 28px;
+  text-align: center;
+  animation: pop 0.35s ease;
+}
+
+h1 {
+  margin: 8px 0 4px;
+  font-size: 2.4rem;
+  color: var(--primary-dark);
+}
+
+h2 {
+  margin: 6px 0;
+  color: var(--primary-dark);
+}
+
+.decor {
+  font-size: 1.8rem;
+  letter-spacing: 8px;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--secondary);
+  font-weight: 700;
+}
+
+.arabic-banner {
+  font-family: var(--arabic-font);
+  direction: rtl;
+  font-size: 2.6rem;
+  color: #1f6f5c;
+  margin: 16px 0;
+  animation: floaty 3s ease-in-out infinite;
+}
+
+.intro {
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 1.05rem;
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 14px;
+}
+
+.btn {
+  font-family: inherit;
+  font-size: 1.15rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 999px;
+  padding: 14px 26px;
+  margin-top: 18px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, var(--primary), #ff9f43);
+  color: #fff;
+  box-shadow: 0 8px 0 var(--primary-dark);
+}
+
+.btn.primary:active {
+  box-shadow: 0 4px 0 var(--primary-dark);
+}
+
+.btn.secondary {
+  background: #eceafe;
+  color: var(--secondary);
+  box-shadow: 0 6px 0 #d3d0f7;
+}
+
+.btn.icon {
+  padding: 8px 14px;
+  margin-top: 0;
+  font-size: 1.2rem;
+  background: #f1f5f9;
+  box-shadow: none;
+}
+
+.quiz-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.progress-text {
+  font-weight: 700;
+}
+
+.score {
+  background: var(--soft);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-weight: 700;
+}
+
+.progress-track {
+  height: 12px;
+  background: #edf2f7;
+  border-radius: 999px;
+  margin: 16px 0 8px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--good), #ffc93c);
+  transition: width 0.4s ease;
+}
+
+.question-label {
+  color: var(--secondary);
+  font-weight: 700;
+  margin-top: 20px;
+}
+
+.question-prompt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 92px;
+  background: var(--soft);
+  border-radius: 22px;
+  margin-top: 10px;
+  padding: 14px;
+}
+
+.prompt-emoji {
+  font-size: 3rem;
+}
+
+.prompt-text {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.prompt-text.arabic {
+  font-family: var(--arabic-font);
+  direction: rtl;
+  font-size: 3rem;
+  line-height: 1.5;
+  color: #1f6f5c;
+}
+
+.options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.option {
+  min-height: 84px;
+  font-family: var(--fun-font);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--ink);
+  border: 3px solid #e8edf2;
+  background: #f9fbff;
+  border-radius: 20px;
+  padding: 12px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+}
+
+.option:hover:not(:disabled) {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 18px rgba(60, 90, 120, 0.15);
+}
+
+.option.arabic {
+  font-family: var(--arabic-font);
+  font-size: 2.1rem;
+  line-height: 1.6;
+  direction: rtl;
+}
+
+.option.correct {
+  background: #d9f7ea;
+  border-color: var(--good);
+}
+
+.option.wrong {
+  background: #ffe2dc;
+  border-color: #ff8a75;
+}
+
+.option:disabled {
+  cursor: default;
+}
+
+.feedback {
+  margin-top: 20px;
+  animation: pop 0.3s ease;
+}
+
+.feedback-emoji {
+  font-size: 3rem;
+}
+
+.answer-reveal {
+  font-family: var(--arabic-font);
+  direction: rtl;
+  font-size: 3.2rem;
+  line-height: 1.5;
+  color: #1f6f5c;
+}
+
+.answer-extra {
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.answer-surah {
+  color: var(--secondary);
+  font-weight: 700;
+  margin: 6px 0 0;
+}
+
+.listen-btn {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1f6f5c;
+  background: #e7f7f1;
+  border: 2px solid #bfe8da;
+  border-radius: 999px;
+  padding: 8px 16px;
+  margin: 10px 4px 0;
+  cursor: pointer;
+}
+
+.listen-btn:hover {
+  background: #d6f2e7;
+}
+
+.trophy {
+  font-size: 4rem;
+  animation: bounce 1.6s ease infinite;
+}
+
+.stars {
+  font-size: 2rem;
+  letter-spacing: 4px;
+}
+
+.final-score {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.result-message {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.learned-box {
+  background: var(--soft);
+  border-radius: 20px;
+  padding: 14px 18px;
+  text-align: left;
+  margin: 18px 0;
+  max-height: 190px;
+  overflow-y: auto;
+}
+
+.learned-box h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.learned-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.learned-box li {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 0.95rem;
+  align-items: center;
+}
+
+.learned-box .word {
+  font-family: var(--arabic-font);
+  font-size: 1.3rem;
+  direction: rtl;
+}
+
+.learned-box .meaning {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.learned-box .meaning small {
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.speak-btn {
+  background: #fff;
+  border: 2px solid #dce7ef;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  font-size: 1rem;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.speak-btn:hover {
+  background: #e7f7f1;
+}
+
+.result-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: -20px;
+  width: 10px;
+  height: 16px;
+  border-radius: 3px;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0.2;
+  }
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-3deg);
+  }
+
+  50% {
+    transform: translateY(-6px) rotate(3deg);
+  }
+}
+
+@media (max-width: 520px) {
+  .card {
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  h1 {
+    font-size: 1.9rem;
+  }
+
+  .options {
+    grid-template-columns: 1fr;
+  }
+
+  .option.arabic {
+    font-size: 1.8rem;
+  }
+
+  .prompt-text.arabic {
+    font-size: 2.4rem;
+  }
+
+  .learned-box ul {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
