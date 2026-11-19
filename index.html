@@ -17,8 +17,24 @@
         <p class="subtitle">Juz 30 Arabic Word Adventure</p>
         <div class="arabic-banner" dir="rtl" lang="ar">جُزْءُ عَمَّ</div>
         <p class="intro">Assalamu alaikum! 👋 Let's read and learn the beautiful Arabic words of Juz 30 together.</p>
-        <button id="start-btn" class="btn primary" type="button">Start Playing 🚀</button>
-        <p class="hint">8 little words per round · no timers · lots of fun</p>
+        <div class="mode-choices">
+          <button id="start-btn" class="btn primary mode-btn" type="button">
+            <span class="mode-icon">🎯</span>
+            <strong>Word Quiz</strong>
+            <small>10 fun questions</small>
+          </button>
+          <button id="surah-mode-btn" class="btn secondary mode-btn" type="button">
+            <span class="mode-icon">📖</span>
+            <strong>Surah Explorer</strong>
+            <small>Match words from a surah</small>
+          </button>
+          <button id="tracker-mode-btn" class="btn primary mode-btn tracker-mode" type="button">
+            <span class="mode-icon">🌳</span>
+            <strong>Juz Garden</strong>
+            <small>Grow your memorisation tree</small>
+          </button>
+        </div>
+        <p class="hint">No timers · gentle feedback · lots of fun</p>
       </div>
     </section>
 
@@ -26,7 +42,7 @@
       <div class="card quiz-card">
         <header class="quiz-header">
           <button id="home-btn" class="btn icon" type="button" aria-label="Go to start screen">🏠</button>
-          <div class="progress-text" id="progress-text">Word 1 of 8</div>
+          <div class="progress-text" id="progress-text">Word 1 of 10</div>
           <div class="score" id="score">⭐ 0</div>
         </header>
         <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
@@ -57,7 +73,7 @@
         <div class="trophy" aria-hidden="true">🏆</div>
         <h1 id="result-title">Amazing work!</h1>
         <div class="stars" id="result-stars"></div>
-        <p class="final-score" id="final-score">You got 6 out of 8!</p>
+        <p class="final-score" id="final-score">You got 8 out of 10!</p>
         <p class="result-message" id="result-message"></p>
         <div class="learned-box">
           <h3>Words you read today 📚</h3>
@@ -66,6 +82,134 @@
         <div class="result-actions">
           <button id="again-btn" class="btn primary" type="button">Play Again 🔁</button>
           <button id="result-home-btn" class="btn secondary" type="button">Home 🏠</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="surah-screen" class="screen hidden">
+      <div class="card surah-card">
+        <header class="quiz-header">
+          <button id="surah-home-btn" class="btn icon" type="button" aria-label="Go to start screen">🏠</button>
+          <div class="progress-text">📖 Surah Explorer</div>
+          <div class="score">🌙 Juz 30</div>
+        </header>
+
+        <div id="surah-picker">
+          <h2>Pick a surah 🌟</h2>
+          <p class="intro">Choose a surah, then match its Arabic words to their meanings.</p>
+          <div id="surah-list" class="surah-list"></div>
+        </div>
+
+        <div id="surah-activity" class="hidden">
+          <button id="surah-back-btn" class="btn icon surah-back" type="button" aria-label="Choose another surah">⬅️</button>
+          <h2 id="surah-title"></h2>
+          <div id="surah-arabic" class="arabic-banner surah-arabic" dir="rtl" lang="ar"></div>
+          <p id="surah-intro" class="intro"></p>
+          <div class="progress-track"><div class="progress-fill" id="surah-progress-fill"></div></div>
+          <p class="question-label" id="surah-progress-text"></p>
+          <p class="hint">Drag a word onto its meaning, or tap a word then tap its meaning.</p>
+          <div id="word-bank" class="word-bank" aria-label="Arabic words"></div>
+          <div id="match-zones" class="match-zones" aria-label="Meanings"></div>
+          <div id="surah-feedback" class="feedback hidden">
+            <div class="feedback-emoji" id="surah-feedback-emoji">🎉</div>
+            <h2 id="surah-feedback-title">Great match!</h2>
+            <div class="answer-reveal" id="surah-answer-reveal" dir="rtl" lang="ar"></div>
+            <p class="answer-extra" id="surah-answer-extra"></p>
+            <p class="answer-surah" id="surah-answer-note"></p>
+            <button id="surah-listen-btn" class="listen-btn" type="button">🔊 Listen again</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="surah-result-screen" class="screen hidden">
+      <div class="card result-card">
+        <div class="trophy" aria-hidden="true">🏆</div>
+        <h1 id="surah-result-title">Surah star!</h1>
+        <p class="result-message" id="surah-result-message"></p>
+        <p class="final-score" id="surah-result-score"></p>
+        <div class="learned-box">
+          <h3 id="surah-result-name"></h3>
+          <ul id="surah-learned-list"></ul>
+        </div>
+        <div class="result-actions">
+          <button id="surah-another-btn" class="btn primary" type="button">Another surah 🔁</button>
+          <button id="surah-result-home-btn" class="btn secondary" type="button">Home 🏠</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="tracker-screen" class="screen hidden">
+      <div class="card tracker-card">
+        <header class="quiz-header">
+          <button id="tracker-home-btn" class="btn icon" type="button" aria-label="Go to start screen">🏠</button>
+          <div class="progress-text">🌳 My Juz Garden</div>
+          <div class="score" id="tracker-count">🍎 0/37</div>
+        </header>
+        <div class="name-bar">
+          <span class="name-avatar" aria-hidden="true">🧒</span>
+          <label for="child-name">My name</label>
+          <input id="child-name" type="text" maxlength="24" placeholder="Your name" autocomplete="given-name">
+          <label class="remember-name"><input id="remember-name" type="checkbox" checked> Remember me</label>
+        </div>
+        <p id="tree-greeting" class="tree-greeting">Assalamu alaikum, friend! 👋</p>
+        <h2>Grow your memorisation tree!</h2>
+        <p class="intro">Every surah you memorise grows a shiny fruit. Keep going to fill the whole Juz!</p>
+        <div class="progress-track"><div class="progress-fill" id="tracker-progress-fill"></div></div>
+        <p class="question-label" id="tracker-progress-text">0 of 37 surahs memorised</p>
+        <div id="tracker-scene" class="tracker-scene" data-stage="1">
+          <div class="garden-sky" aria-hidden="true">
+            <span class="garden-sun">☀️</span>
+            <span class="garden-cloud cloud-one">☁️</span>
+            <span class="garden-cloud cloud-two">☁️</span>
+            <span class="garden-bird bird-one">🐦</span>
+            <span class="garden-bird bird-two">🐦</span>
+            <span class="garden-butterfly butterfly-one">🦋</span>
+            <span class="garden-butterfly butterfly-two">🦋</span>
+          </div>
+          <div id="tree-banner" class="tree-banner">🌱 Your tree is waiting for its first fruit!</div>
+          <svg class="tree-svg" viewBox="0 0 400 300" aria-hidden="true">
+            <defs>
+              <linearGradient id="trunkGradient" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#7b4b2a"></stop>
+                <stop offset="50%" stop-color="#c0824c"></stop>
+                <stop offset="100%" stop-color="#7b4b2a"></stop>
+              </linearGradient>
+              <radialGradient id="canopyGlow" cx="50%" cy="32%" r="70%">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.55"></stop>
+                <stop offset="100%" stop-color="#ffffff" stop-opacity="0"></stop>
+              </radialGradient>
+            </defs>
+            <ellipse class="canopy canopy-outer" cx="200" cy="112" rx="132" ry="88"></ellipse>
+            <ellipse class="canopy canopy-mid" cx="160" cy="102" rx="82" ry="64"></ellipse>
+            <ellipse class="canopy canopy-core" cx="240" cy="104" rx="80" ry="62"></ellipse>
+            <ellipse class="canopy-shine" cx="200" cy="96" rx="118" ry="78"></ellipse>
+            <path class="tree-branch" d="M200 275 C198 220 196 180 200 140"></path>
+            <path class="tree-branch" d="M200 205 C170 185 145 165 120 145"></path>
+            <path class="tree-branch" d="M201 200 C232 180 258 160 282 138"></path>
+            <path class="tree-branch" d="M200 240 C175 225 155 210 140 195"></path>
+            <path class="tree-branch" d="M201 235 C228 220 248 205 265 190"></path>
+            <path class="tree-trunk" d="M184 292 C184 245 188 205 194 170 L206 170 C212 205 216 245 216 292 Z"></path>
+            <path class="tree-root" d="M194 288 C176 288 162 294 150 300"></path>
+            <path class="tree-root" d="M206 288 C224 288 238 294 250 300"></path>
+          </svg>
+          <div id="fruit-layer" class="fruit-layer"></div>
+          <div class="garden-ground" aria-hidden="true"></div>
+          <div class="garden-flowers" aria-hidden="true">
+            <span class="flower flower-one">🌼</span>
+            <span class="flower flower-two">🌸</span>
+            <span class="flower flower-three">🌼</span>
+            <span class="flower flower-four">🌻</span>
+          </div>
+        </div>
+        <p id="tracker-message" class="tracker-message">Tap a surah below to grow your first fruit! 🌱</p>
+        <h3 class="tracker-section-title">Milestones 🏅</h3>
+        <div id="milestone-list" class="milestone-list"></div>
+        <h3 class="tracker-section-title">My surahs 📿</h3>
+        <p class="hint">Tap a surah to mark it memorised. Tap again to change your mind.</p>
+        <div id="tracker-grid" class="tracker-grid"></div>
+        <div class="result-actions tracker-actions">
+          <button id="tracker-reset-btn" class="btn secondary" type="button">Fresh garden 🌱</button>
         </div>
       </div>
     </section>
