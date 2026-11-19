@@ -1,16 +1,18 @@
 :root {
-  --bg-top: #fff6e5;
-  --bg-bottom: #dff3ff;
-  --card: #ffffff;
+  --bg-top: #fff0b3;
+  --bg-bottom: #bfe9ff;
+  --card: #fffdf7;
   --ink: #263238;
-  --muted: #6b7c85;
-  --primary: #ff7a59;
-  --primary-dark: #e85d3f;
-  --secondary: #7d7bf5;
-  --good: #43c59e;
-  --soft: #fff0d6;
-  --radius: 28px;
-  --shadow: 0 18px 40px rgba(60, 90, 120, 0.18);
+  --muted: #5b6f7a;
+  --primary: #ff6b9d;
+  --primary-dark: #d63f77;
+  --secondary: #6c5ce7;
+  --good: #2fbf8f;
+  --soft: #fff2c9;
+  --yellow: #ffd23f;
+  --blue: #4fc3f7;
+  --radius: 36px;
+  --shadow: 0 22px 0 rgba(108, 92, 231, 0.12), 0 26px 50px rgba(60, 90, 120, 0.22);
   --fun-font: "Fredoka", "Comic Sans MS", "Chalkboard SE", "Trebuchet MS", sans-serif;
   --arabic-font: "Amiri", "Noto Naskh Arabic", "Traditional Arabic", "Segoe UI", Tahoma, serif;
 }
@@ -29,7 +31,12 @@ body {
   min-height: 100vh;
   font-family: var(--fun-font);
   color: var(--ink);
-  background: linear-gradient(160deg, var(--bg-top), var(--bg-bottom));
+  background:
+    radial-gradient(circle at 12% 18%, rgba(255, 107, 157, 0.28) 0 14%, transparent 14%),
+    radial-gradient(circle at 88% 28%, rgba(79, 195, 247, 0.35) 0 17%, transparent 17%),
+    radial-gradient(circle at 18% 82%, rgba(47, 191, 143, 0.25) 0 15%, transparent 15%),
+    radial-gradient(circle at 82% 88%, rgba(255, 210, 63, 0.4) 0 16%, transparent 16%),
+    linear-gradient(160deg, var(--bg-top), var(--bg-bottom));
   overflow-x: hidden;
 }
 
@@ -45,7 +52,8 @@ body {
   position: absolute;
   bottom: -90px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: inset -8px -8px 0 rgba(255, 107, 157, 0.18);
   animation: rise linear infinite;
 }
 
@@ -63,7 +71,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 32px 20px;
 }
 
 .screen {
@@ -78,67 +86,74 @@ body {
 }
 
 .card {
-  width: min(100%, 620px);
+  width: min(100%, 720px);
   background: var(--card);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  border: 4px solid rgba(255, 255, 255, 0.9);
-  padding: 28px;
+  border: 6px solid rgba(255, 255, 255, 0.95);
+  outline: 4px dashed rgba(108, 92, 231, 0.18);
+  outline-offset: 6px;
+  padding: 38px;
   text-align: center;
   animation: pop 0.35s ease;
 }
 
 h1 {
-  margin: 8px 0 4px;
-  font-size: 2.4rem;
+  margin: 10px 0 6px;
+  font-size: 3.1rem;
   color: var(--primary-dark);
+  text-shadow: 2px 3px 0 #ffe08a;
 }
 
 h2 {
-  margin: 6px 0;
+  margin: 8px 0;
+  font-size: 2rem;
   color: var(--primary-dark);
 }
 
 .decor {
-  font-size: 1.8rem;
-  letter-spacing: 8px;
+  font-size: 2.4rem;
+  letter-spacing: 10px;
+  animation: wiggle 2.5s ease-in-out infinite;
 }
 
 .subtitle {
   margin: 0;
   color: var(--secondary);
   font-weight: 700;
+  font-size: 1.35rem;
 }
 
 .arabic-banner {
   font-family: var(--arabic-font);
   direction: rtl;
-  font-size: 2.6rem;
+  font-size: 3.4rem;
   color: #1f6f5c;
-  margin: 16px 0;
+  margin: 20px 0;
   animation: floaty 3s ease-in-out infinite;
 }
 
 .intro {
   color: var(--muted);
-  line-height: 1.6;
-  font-size: 1.05rem;
+  line-height: 1.7;
+  font-size: 1.3rem;
+  font-weight: 600;
 }
 
 .hint {
   color: var(--muted);
-  font-size: 0.85rem;
-  margin-top: 14px;
+  font-size: 1.05rem;
+  margin-top: 18px;
 }
 
 .btn {
   font-family: inherit;
-  font-size: 1.15rem;
-  font-weight: 700;
+  font-size: 1.4rem;
+  font-weight: 800;
   border: none;
   border-radius: 999px;
-  padding: 14px 26px;
-  margin-top: 18px;
+  padding: 18px 34px;
+  margin-top: 22px;
   cursor: pointer;
   transition: transform 0.15s, box-shadow 0.15s;
 }
@@ -154,7 +169,8 @@ h2 {
 .btn.primary {
   background: linear-gradient(135deg, var(--primary), #ff9f43);
   color: #fff;
-  box-shadow: 0 8px 0 var(--primary-dark);
+  box-shadow: 0 10px 0 var(--primary-dark);
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
 }
 
 .btn.primary:active {
@@ -164,15 +180,15 @@ h2 {
 .btn.secondary {
   background: #eceafe;
   color: var(--secondary);
-  box-shadow: 0 6px 0 #d3d0f7;
+  box-shadow: 0 8px 0 #d3d0f7;
 }
 
 .btn.icon {
-  padding: 8px 14px;
+  padding: 12px 20px;
   margin-top: 0;
-  font-size: 1.2rem;
+  font-size: 1.7rem;
   background: #f1f5f9;
-  box-shadow: none;
+  box-shadow: 0 5px 0 #dce7ef;
 }
 
 .quiz-header {
@@ -183,22 +199,26 @@ h2 {
 }
 
 .progress-text {
-  font-weight: 700;
+  font-weight: 800;
+  font-size: 1.25rem;
 }
 
 .score {
   background: var(--soft);
   border-radius: 999px;
-  padding: 8px 14px;
-  font-weight: 700;
+  padding: 10px 20px;
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: #b37700;
 }
 
 .progress-track {
-  height: 12px;
+  height: 18px;
   background: #edf2f7;
   border-radius: 999px;
-  margin: 16px 0 8px;
+  margin: 20px 0 10px;
   overflow: hidden;
+  border: 2px solid #e2e8f0;
 }
 
 .progress-fill {
@@ -211,35 +231,37 @@ h2 {
 
 .question-label {
   color: var(--secondary);
-  font-weight: 700;
-  margin-top: 20px;
+  font-weight: 800;
+  font-size: 1.35rem;
+  margin-top: 24px;
 }
 
 .question-prompt {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  min-height: 92px;
+  gap: 16px;
+  min-height: 126px;
   background: var(--soft);
-  border-radius: 22px;
-  margin-top: 10px;
-  padding: 14px;
+  border: 3px solid #ffe2a1;
+  border-radius: 26px;
+  margin-top: 12px;
+  padding: 18px;
 }
 
 .prompt-emoji {
-  font-size: 3rem;
+  font-size: 4rem;
 }
 
 .prompt-text {
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 2.6rem;
+  font-weight: 800;
 }
 
 .prompt-text.arabic {
   font-family: var(--arabic-font);
   direction: rtl;
-  font-size: 3rem;
+  font-size: 4rem;
   line-height: 1.5;
   color: #1f6f5c;
 }
@@ -247,22 +269,42 @@ h2 {
 .options {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
-  margin-top: 22px;
+  gap: 18px;
+  margin-top: 26px;
 }
 
 .option {
-  min-height: 84px;
+  min-height: 112px;
   font-family: var(--fun-font);
-  font-size: 1.45rem;
-  font-weight: 700;
+  font-size: 1.75rem;
+  font-weight: 800;
   color: var(--ink);
-  border: 3px solid #e8edf2;
+  border: 4px solid #e8edf2;
   background: #f9fbff;
-  border-radius: 20px;
-  padding: 12px;
+  border-radius: 26px;
+  padding: 16px;
   cursor: pointer;
   transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+}
+
+.option:nth-child(4n + 1) {
+  background: #fff0f6;
+  border-color: #ffd0e2;
+}
+
+.option:nth-child(4n + 2) {
+  background: #eef7ff;
+  border-color: #cfe8ff;
+}
+
+.option:nth-child(4n + 3) {
+  background: #f0fff7;
+  border-color: #c9f0dd;
+}
+
+.option:nth-child(4n + 4) {
+  background: #fffbe8;
+  border-color: #ffeeb0;
 }
 
 .option:hover:not(:disabled) {
@@ -272,7 +314,7 @@ h2 {
 
 .option.arabic {
   font-family: var(--arabic-font);
-  font-size: 2.1rem;
+  font-size: 2.8rem;
   line-height: 1.6;
   direction: rtl;
 }
@@ -297,38 +339,41 @@ h2 {
 }
 
 .feedback-emoji {
-  font-size: 3rem;
+  font-size: 4rem;
+  animation: bounce 1.6s ease infinite;
 }
 
 .answer-reveal {
   font-family: var(--arabic-font);
   direction: rtl;
-  font-size: 3.2rem;
+  font-size: 4.2rem;
   line-height: 1.5;
   color: #1f6f5c;
 }
 
 .answer-extra {
   color: var(--muted);
-  font-size: 1.05rem;
+  font-size: 1.3rem;
+  font-weight: 600;
 }
 
 .answer-surah {
   color: var(--secondary);
-  font-weight: 700;
-  margin: 6px 0 0;
+  font-weight: 800;
+  font-size: 1.15rem;
+  margin: 8px 0 0;
 }
 
 .listen-btn {
   font-family: inherit;
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: 1.2rem;
+  font-weight: 800;
   color: #1f6f5c;
   background: #e7f7f1;
-  border: 2px solid #bfe8da;
+  border: 3px solid #bfe8da;
   border-radius: 999px;
-  padding: 8px 16px;
-  margin: 10px 4px 0;
+  padding: 12px 22px;
+  margin: 12px 6px 0;
   cursor: pointer;
 }
 
@@ -337,38 +382,41 @@ h2 {
 }
 
 .trophy {
-  font-size: 4rem;
+  font-size: 5.2rem;
   animation: bounce 1.6s ease infinite;
 }
 
 .stars {
-  font-size: 2rem;
-  letter-spacing: 4px;
+  font-size: 2.6rem;
+  letter-spacing: 6px;
 }
 
 .final-score {
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: 800;
 }
 
 .result-message {
   color: var(--muted);
-  line-height: 1.5;
+  line-height: 1.6;
+  font-size: 1.25rem;
+  font-weight: 600;
 }
 
 .learned-box {
   background: var(--soft);
-  border-radius: 20px;
-  padding: 14px 18px;
+  border: 3px solid #ffe2a1;
+  border-radius: 26px;
+  padding: 18px 22px;
   text-align: left;
-  margin: 18px 0;
-  max-height: 190px;
+  margin: 22px 0;
+  max-height: 230px;
   overflow-y: auto;
 }
 
 .learned-box h3 {
-  margin: 0 0 8px;
-  font-size: 1rem;
+  margin: 0 0 12px;
+  font-size: 1.3rem;
   text-align: center;
 }
 
@@ -384,14 +432,15 @@ h2 {
 .learned-box li {
   display: flex;
   justify-content: space-between;
-  gap: 8px;
-  font-size: 0.95rem;
+  gap: 10px;
+  font-size: 1.15rem;
+  font-weight: 700;
   align-items: center;
 }
 
 .learned-box .word {
   font-family: var(--arabic-font);
-  font-size: 1.3rem;
+  font-size: 1.7rem;
   direction: rtl;
 }
 
@@ -403,16 +452,16 @@ h2 {
 
 .learned-box .meaning small {
   color: var(--muted);
-  font-size: 0.75rem;
+  font-size: 0.9rem;
 }
 
 .speak-btn {
   background: #fff;
-  border: 2px solid #dce7ef;
+  border: 3px solid #dce7ef;
   border-radius: 50%;
-  width: 34px;
-  height: 34px;
-  font-size: 1rem;
+  width: 44px;
+  height: 44px;
+  font-size: 1.25rem;
   cursor: pointer;
   flex-shrink: 0;
 }
@@ -482,30 +531,103 @@ h2 {
   }
 
   50% {
-    transform: translateY(-6px) rotate(3deg);
+    transform: translateY(-8px) rotate(3deg);
+  }
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(-4deg);
+  }
+
+  50% {
+    transform: rotate(4deg);
   }
 }
 
 @media (max-width: 520px) {
+  .app {
+    padding: 24px 12px;
+  }
+
   .card {
-    padding: 18px;
-    border-radius: 22px;
+    padding: 24px 18px;
+    border-radius: 28px;
   }
 
   h1 {
-    font-size: 1.9rem;
+    font-size: 2.4rem;
+  }
+
+  h2 {
+    font-size: 1.7rem;
+  }
+
+  .decor {
+    font-size: 2rem;
+  }
+
+  .subtitle,
+  .intro {
+    font-size: 1.15rem;
+  }
+
+  .arabic-banner {
+    font-size: 2.8rem;
+  }
+
+  .btn {
+    font-size: 1.25rem;
+    padding: 16px 26px;
+  }
+
+  .progress-text,
+  .score {
+    font-size: 1.05rem;
+  }
+
+  .btn.icon {
+    font-size: 1.4rem;
+    padding: 10px 16px;
+  }
+
+  .question-prompt {
+    min-height: 110px;
+  }
+
+  .prompt-emoji {
+    font-size: 3.2rem;
+  }
+
+  .prompt-text {
+    font-size: 2.1rem;
+  }
+
+  .prompt-text.arabic {
+    font-size: 3.2rem;
   }
 
   .options {
     grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .option {
+    min-height: 92px;
+    font-size: 1.5rem;
   }
 
   .option.arabic {
-    font-size: 1.8rem;
+    font-size: 2.3rem;
   }
 
-  .prompt-text.arabic {
-    font-size: 2.4rem;
+  .answer-reveal {
+    font-size: 3.4rem;
+  }
+
+  .trophy {
+    font-size: 4.2rem;
   }
 
   .learned-box ul {
